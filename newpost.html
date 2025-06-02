@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuovo Post</title>
+
+  
+  <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nuovo Post</title>
+
+  <!-- Questa è la riga da aggiungere -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+
+<body>
+  <h1>Crea un nuovo post</h1>
+  <form action="/create-post" method="POST">
+    <label>Titolo:</label><br>
+    <input type="text" name="title" required><br><br>
+
+    <label>Contenuto:</label><br>
+    <textarea name="content" rows="5" cols="30" required></textarea><br><br>
+
+    <button type="submit">Pubblica</button>
+  </form>
+  <br>
+  <a href="/posts">Vai ai post pubblicati</a>
+</body>
+</html>
+

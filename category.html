@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Categoria – MusicHub</title>
+  <link rel="stylesheet" href="/style.css">
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const categoryName = params.get('name');
+
+      const categoryData = {
+        promozione: {
+          title: "📢 Promozione musicale",
+          description: "Scopri come promuovere i tuoi brani, ottenere visibilità e far crescere il tuo pubblico.",
+        },
+        collaborazioni: {
+          title: "🤝 Collaborazioni",
+          description: "Trova artisti, producer e musicisti con cui creare nuovi progetti.",
+        },
+        etichette: {
+          title: "🏷️ Etichette discografiche",
+          description: "Parla con A&R, condividi demo e scopri come entrare in un’etichetta.",
+        },
+        mastering: {
+          title: "🎚️ Mastering e produzione",
+          description: "Consigli su mixing, mastering, attrezzatura e software.",
+        },
+        eventi: {
+          title: "📅 Eventi e live",
+          description: "Segnala o scopri eventi, contest, festival e occasioni live.",
+        },
+        consigli: {
+          title: "💬 Consigli & Strategie",
+          description: "Hai un dubbio? Qui puoi chiedere consigli pratici e tecnici.",
+        }
+      };
+
+      const section = document.querySelector(".category-section");
+      const createBtn = document.getElementById("create-post-btn");
+
+      if (categoryData[categoryName]) {
+        section.querySelector("h1").textContent = categoryData[categoryName].title;
+        section.querySelector("p").textContent = categoryData[categoryName].description;
+        createBtn.href = `/newpost?category=${categoryName}`;
+      } else {
+        section.querySelector("h1").textContent = "❓ Categoria sconosciuta";
+        section.querySelector("p").textContent = "La categoria selezionata non esiste o non è stata ancora attivata.";
+        createBtn.style.display = "none";
+      }
+    });
+  </script>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>🎧 Esplora</h2>
+      <ul>
+        <li><a href="/posts">📝 Post</a></li>
+        <li><a href="/categories">📂 Categorie</a></li>
+        <li><a href="/curators">🎼 Curatori</a></li>
+      </ul>
+
+      <h2>👤 Il tuo account</h2>
+      <ul>
+        <li><a href="/profile">👥 Profilo</a></li>
+        <li><a href="/newpost">➕ Nuovo post</a></li>
+        <li><a href="/login">🔐 Login</a></li>
+        <li><a href="/register">✍️ Registrati</a></li>
+      </ul>
+
+      <h2>📞 Supporto</h2>
+      <ul>
+        <li><a href="/contact">📬 Contattaci</a></li>
+        <li><a href="/rules">📜 Regole</a></li>
+      </ul>
+    </aside>
+
+    <main class="main-content">
+      <div class="main-inner">
+        <section class="category-section">
+          <h1>Caricamento...</h1>
+          <p></p>
+        </section>
+
+        <div class="category-actions">
+          <input type="text" placeholder="🔍 Cerca tra i post..." class="search-bar">
+          <div class="filter-buttons">
+            <button>🕒 Più recenti</button>
+            <button>⭐ Più votati</button>
+          </div>
+          <a href="#" id="create-post-btn" class="big-button">+ Crea un post</a>
+        </div>
+
+        <div class="post-list">
+          <div class="post-card">
+            <h2>🎤 Esempio di post</h2>
+            <p>Questo è un esempio di contenuto nella categoria selezionata.</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
