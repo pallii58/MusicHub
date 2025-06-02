@@ -1,12 +1,20 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 
 const port = process.env.PORT || 3000;
 
-// Servi i file statici dalla cartella "public"
-app.use(express.static('public'));
+// Route fissa: solo homepage
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
-// Avvio server
+// Qualsiasi altra route → 404
+app.use((req, res) => {
+  res.status(404).send('404 - Pagina non trovata');
+});
+
+// Avvio del server
 app.listen(port, () => {
-  console.log(`Server attivo su http://localhost:${port}`);
+  console.log(`✅ Homepage disponibile su http://localhost:${port}`);
 });
